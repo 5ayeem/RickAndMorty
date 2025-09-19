@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CD7303012E7DC5600004A297 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = CD7303002E7DC5600004A297 /* Apollo */; };
-		CD7303032E7DC5600004A297 /* ApolloAPI in Frameworks */ = {isa = PBXBuildFile; productRef = CD7303022E7DC5600004A297 /* ApolloAPI */; };
 		CD7303052E7DC5600004A297 /* ApolloTestSupport in Frameworks */ = {isa = PBXBuildFile; productRef = CD7303042E7DC5600004A297 /* ApolloTestSupport */; };
+		CD73037E2E7DF0A90004A297 /* RickAndMortyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = CD73037D2E7DF0A90004A297 /* RickAndMortyAPI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +51,11 @@
 			path = RickAndMortyUITests;
 			sourceTree = "<group>";
 		};
+		CD7303832E7DF48F0004A297 /* GraphQL */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD7303032E7DC5600004A297 /* ApolloAPI in Frameworks */,
+				CD73037E2E7DF0A90004A297 /* RickAndMortyAPI in Frameworks */,
 				CD7303012E7DC5600004A297 /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +89,7 @@
 		CD7302B42E7DB6270004A297 = {
 			isa = PBXGroup;
 			children = (
+				CD7303832E7DF48F0004A297 /* GraphQL */,
 				CD7302BF2E7DB6270004A297 /* RickAndMorty */,
 				CD7302CD2E7DB62A0004A297 /* RickAndMortyTests */,
 				CD7302D72E7DB62A0004A297 /* RickAndMortyUITests */,
@@ -108,6 +114,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD7302DE2E7DB62A0004A297 /* Build configuration list for PBXNativeTarget "RickAndMorty" */;
 			buildPhases = (
+				CD7303842E7DF5AC0004A297 /* ShellScript */,
 				CD7302B92E7DB6270004A297 /* Sources */,
 				CD7302BA2E7DB6270004A297 /* Frameworks */,
 				CD7302BB2E7DB6270004A297 /* Resources */,
@@ -122,7 +129,7 @@
 			name = RickAndMorty;
 			packageProductDependencies = (
 				CD7303002E7DC5600004A297 /* Apollo */,
-				CD7303022E7DC5600004A297 /* ApolloAPI */,
+				CD73037D2E7DF0A90004A297 /* RickAndMortyAPI */,
 			);
 			productName = RickAndMorty;
 			productReference = CD7302BD2E7DB6270004A297 /* RickAndMorty.app */;
@@ -209,6 +216,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				CD7302FF2E7DC5600004A297 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				CD73037C2E7DF0A90004A297 /* XCLocalSwiftPackageReference "Generated/RMAPI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CD7302BE2E7DB6270004A297 /* Products */;
@@ -245,6 +253,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CD7303842E7DF5AC0004A297 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./apollo-ios-cli generate\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CD7302B92E7DB6270004A297 /* Sources */ = {
@@ -586,6 +615,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		CD73037C2E7DF0A90004A297 /* XCLocalSwiftPackageReference "Generated/RMAPI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Generated/RMAPI;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		CD7302FF2E7DC5600004A297 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -603,15 +639,14 @@
 			package = CD7302FF2E7DC5600004A297 /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = Apollo;
 		};
-		CD7303022E7DC5600004A297 /* ApolloAPI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CD7302FF2E7DC5600004A297 /* XCRemoteSwiftPackageReference "apollo-ios" */;
-			productName = ApolloAPI;
-		};
 		CD7303042E7DC5600004A297 /* ApolloTestSupport */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CD7302FF2E7DC5600004A297 /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = ApolloTestSupport;
+		};
+		CD73037D2E7DF0A90004A297 /* RickAndMortyAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RickAndMortyAPI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

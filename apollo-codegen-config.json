@@ -1,5 +1,5 @@
 {
-  "schemaNamespace": "RickAndMorty",
+  "schemaNamespace": "RickAndMortyAPI",
   "schemaDownload": {
     "downloadMethod": {
       "introspection": {
@@ -14,25 +14,16 @@
     "outputPath": "./GraphQL/Schema/schema.graphqls"
   },
   "input": {
-    "operationSearchPaths": [
-      "GraphQL/Operations/**/*.graphql"
-    ],
-    "schemaSearchPaths": [
-      "GraphQL/Schema/schema.graphqls"
-    ]
+    "operationSearchPaths": ["GraphQL/Operations/**/*.graphql"],
+    "schemaSearchPaths": ["GraphQL/Schema/schema.graphqls"]
   },
   "output": {
     "schemaTypes": {
-      "path": "./RickAndMorty",
-      "moduleType": {
-        "swiftPackage": {}
-      }
+      "path": "./Generated/RMAPI",
+      "moduleType": { "swiftPackage": {} }
     },
-    "operations": {
-      "inSchemaModule": {}
-    },
-    "testMocks": {
-      "none": {}
-    }
+    "operations": { "inSchemaModule": {} },
+    "testMocks": { "none": {} }
   }
 }
+
