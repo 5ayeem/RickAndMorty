@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CD7303012E7DC5600004A297 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = CD7303002E7DC5600004A297 /* Apollo */; };
+		CD7303032E7DC5600004A297 /* ApolloAPI in Frameworks */ = {isa = PBXBuildFile; productRef = CD7303022E7DC5600004A297 /* ApolloAPI */; };
+		CD7303052E7DC5600004A297 /* ApolloTestSupport in Frameworks */ = {isa = PBXBuildFile; productRef = CD7303042E7DC5600004A297 /* ApolloTestSupport */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		CD7302CB2E7DB62A0004A297 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD7303032E7DC5600004A297 /* ApolloAPI in Frameworks */,
+				CD7303012E7DC5600004A297 /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD7303052E7DC5600004A297 /* ApolloTestSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +121,8 @@
 			);
 			name = RickAndMorty;
 			packageProductDependencies = (
+				CD7303002E7DC5600004A297 /* Apollo */,
+				CD7303022E7DC5600004A297 /* ApolloAPI */,
 			);
 			productName = RickAndMorty;
 			productReference = CD7302BD2E7DB6270004A297 /* RickAndMorty.app */;
@@ -135,6 +146,7 @@
 			);
 			name = RickAndMortyTests;
 			packageProductDependencies = (
+				CD7303042E7DC5600004A297 /* ApolloTestSupport */,
 			);
 			productName = RickAndMortyTests;
 			productReference = CD7302CA2E7DB62A0004A297 /* RickAndMortyTests.xctest */;
@@ -195,6 +207,9 @@
 			);
 			mainGroup = CD7302B42E7DB6270004A297;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CD7302FF2E7DC5600004A297 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CD7302BE2E7DB6270004A297 /* Products */;
 			projectDirPath = "";
@@ -570,6 +585,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CD7302FF2E7DC5600004A297 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.23.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CD7303002E7DC5600004A297 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD7302FF2E7DC5600004A297 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		CD7303022E7DC5600004A297 /* ApolloAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD7302FF2E7DC5600004A297 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloAPI;
+		};
+		CD7303042E7DC5600004A297 /* ApolloTestSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD7302FF2E7DC5600004A297 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloTestSupport;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CD7302B52E7DB6270004A297 /* Project object */;
 }
