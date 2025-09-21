@@ -114,7 +114,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD7302DE2E7DB62A0004A297 /* Build configuration list for PBXNativeTarget "RickAndMorty" */;
 			buildPhases = (
-				CD7303842E7DF5AC0004A297 /* ShellScript */,
 				CD7302B92E7DB6270004A297 /* Sources */,
 				CD7302BA2E7DB6270004A297 /* Frameworks */,
 				CD7302BB2E7DB6270004A297 /* Resources */,
@@ -253,27 +252,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		CD7303842E7DF5AC0004A297 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./apollo-ios-cli generate\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CD7302B92E7DB6270004A297 /* Sources */ = {
