@@ -15,7 +15,9 @@ struct RickAndMortyApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                CharactersView(viewModel: .init(repo: container.charactersRepo))
+                CharactersView(
+                    viewModel: container.createCharactersViewModel()
+                )
             }
         }
     }

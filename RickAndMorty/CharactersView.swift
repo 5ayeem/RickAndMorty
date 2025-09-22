@@ -13,7 +13,10 @@ struct CharactersView: View {
     
     private let columns: Int
 
-    init(viewModel: CharactersViewModel, columns: Int = 2) {
+    init(
+        viewModel: CharactersViewModel,
+        columns: Int = 2
+    ) {
         _viewModel = StateObject(wrappedValue: viewModel)
         self.columns = max(1, columns)
     }
@@ -32,46 +35,31 @@ struct CharactersView: View {
 
             LazyVGrid(columns: gridLayout, spacing: 12) {
                 ForEach(viewModel.characters) { character in
-                    CharacterTile(character: character)
+                    NavigationLink {
+                        CharacterDetailsView(
+                            viewModel: viewModel.container
+                                .createCharacterDetailsViewModel(id: character.id)
+                        )
+                    } label: {
+                        CharacterTile(character: character)
+                    }
                 }
             }
             .padding(12)
         }
-        .overlay { if viewModel.loading { ProgressView() } }
-        .navigationTitle("Characters")
         .task { await viewModel.load() }
+        .navigationTitle("Characters")
+        .overlay { if viewModel.loading { ProgressView() } }
     }
 }
 
 private struct CharacterTile: View {
+    
     let character: CharacterSummary
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            AsyncImage(url: character.imageURL) { phase in
-                switch phase {
-                case .success(let img):
-                    img.resizable()
-                        .scaledToFill()
-                case .failure(_):
-                    ZStack {
-                        Rectangle().fill(Color.secondary.opacity(0.2))
-                        Image(systemName: "photo")
-                            .imageScale(.large)
-                            .foregroundColor(.secondary)
-                    }
-                case .empty:
-                    ZStack {
-                        Rectangle().fill(Color.secondary.opacity(0.1))
-                        ProgressView()
-                    }
-                @unknown default:
-                    fatalError()
-                }
-            }
-            .aspectRatio(1, contentMode: .fill)
-            .clipped()
-
+            CharacterAsyncImageView(url: character.imageURL)
             VStack(alignment: .leading, spacing: 2) {
                 Text(character.name)
                     .font(.headline)
@@ -96,4 +84,3 @@ private struct CharacterTile: View {
         .shadow(color: .black.opacity(0.05), radius: 4, y: 2)
     }
 }
-

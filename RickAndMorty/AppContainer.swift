@@ -18,4 +18,12 @@ final class AppContainer {
         self.network = networkBuilder(endpoint)
         self.charactersRepo = DefaultCharactersRepository(network: network)
     }
+    
+    func createCharactersViewModel() -> CharactersViewModel {
+        CharactersViewModel(repo: charactersRepo, container: self)
+    }
+    
+    func createCharacterDetailsViewModel(id: String) -> CharacterDetailsViewModel {
+        CharacterDetailsViewModel(id: id, repo: charactersRepo)
+    }
 }

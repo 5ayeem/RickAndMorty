@@ -10,14 +10,17 @@ import Combine
 
 @MainActor
 final class CharactersViewModel: ObservableObject {
-    private let repo: CharactersRepository
-
+    
     @Published var characters: [CharacterSummary] = []
     @Published var loading = false
     @Published var errorMessage: String?
+    
+    private let repo: CharactersRepository
+    let container: AppContainer
 
-    init(repo: CharactersRepository) {
+    init(repo: CharactersRepository, container: AppContainer) {
         self.repo = repo
+        self.container = container
     }
 
     func load(page: Int = 1) async {
