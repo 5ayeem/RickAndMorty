@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct RickAndMortyApp: App {
+    
+    private let container = AppContainer()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                CharactersView(viewModel: .init(repo: container.charactersRepo))
+            }
         }
     }
 }

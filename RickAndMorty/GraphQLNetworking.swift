@@ -1,5 +1,5 @@
 //
-//  ApolloGraphQLNetworking.swift
+//  GraphQLNetworking.swift
 //  RickAndMorty
 //
 //  Created by Sayeem Hussain on 21/09/2025.
@@ -22,7 +22,7 @@ protocol GraphQLNetworking {
     ) async throws -> GraphQLResult<M.Data>
 }
 
-final class ApolloGraphQLNetworking: GraphQLNetworking {
+final class DefaultGraphQLNetworking: GraphQLNetworking {
     
     // MARK: - Properties
     private let client: ApolloClientProtocol
