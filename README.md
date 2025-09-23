@@ -108,6 +108,7 @@ App (Views, ViewModels, InsightsService, Repositories)
 * **Rate limits / quotas:** The app falls back to a mock LLM when no key is set.
 * **Accessibility:** Basic support via SwiftUI defaults
 * **Dark mode:** No support for dark mode.
+* **Navigation:** No centralised navigation logic via use of coordinators.
 
 ---
 
