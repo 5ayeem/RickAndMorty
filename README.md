@@ -141,9 +141,8 @@ Replace `OpenAIClient` with another `LLMClient` implementation (Cohere/Gemini) w
 ---
 
 ## 📸 Demo
-<video controls width="720" poster="Demo/thumbnail.png">
-  <source src="https://github.com/5ayeem/RickAndMorty/blob/main/Demo/demo.mov" type="video/mov">
-  Your browser doesn’t support embedded videos.
+<video src="Demo/demo.mp4" controls width="720" poster="Demo/thumbnail.png">
+  https://github.com/5ayeem/RickAndMorty/blob/main/Demo/demo.mov
 </video>
 
 ## 🙏 Credits
