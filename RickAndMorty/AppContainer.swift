@@ -7,9 +7,17 @@
 
 import Foundation
 
-final class AppContainer {
-    let network: GraphQLNetworking
-    let charactersRepo: CharactersRepository
+protocol AppContainer {
+    
+    func createCharactersViewModel() -> CharactersViewModel
+    func createCharacterDetailsViewModel(id: String) -> CharacterDetailsViewModel
+}
+
+final class DefaultAppContainer: AppContainer {
+    
+    private let network: GraphQLNetworking
+    private let charactersRepo: CharactersRepository
+    private let llmClientFactory: LLMClientFactory = .init()
 
     init(
         endpoint: URL = URL(string: "https://rickandmortyapi.com/graphql")!,
@@ -24,6 +32,6 @@ final class AppContainer {
     }
     
     func createCharacterDetailsViewModel(id: String) -> CharacterDetailsViewModel {
-        CharacterDetailsViewModel(id: id, repo: charactersRepo)
+        CharacterDetailsViewModel(id: id, repo: charactersRepo, llm: llmClientFactory.llm)
     }
 }

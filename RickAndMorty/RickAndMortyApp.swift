@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct RickAndMortyApp: App {
     
-    private let container = AppContainer()
+    private let container = DefaultAppContainer()
     
     var body: some Scene {
         WindowGroup {
