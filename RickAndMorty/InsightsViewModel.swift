@@ -18,35 +18,33 @@ final class InsightsViewModel: ObservableObject {
              error(String)
     }
     
-    private let llm: LLMClient
+    private let insights: InsightsService
     private let character: CharacterDetails
     
     @Published var mode: Mode = .idle
     @Published var question: String = ""
     
-    init(character: CharacterDetails, llm: LLMClient) {
+    init(character: CharacterDetails, insights: InsightsService) {
         self.character = character
-        self.llm = llm
+        self.insights = insights
     }
     
     func summarize() async {
         await run {
-            try await llm.summarize(character)
+            try await insights.summarize(character)
         }
     }
     
     func funFact() async {
         await run {
-            try await llm.funFact(character)
+            try await insights.funFact(character)
         }
     }
     
     func ask() async {
         let q = question.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !q.isEmpty else { return }
-        await run {
-            try await llm.answer(character, question: q)
-        }
+        await run { try await insights.answer(character, question: q) }
     }
     
     private func run(_ work: () async throws -> String) async {

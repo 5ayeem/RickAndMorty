@@ -31,7 +31,7 @@ struct CharacterDetailsView: View {
                             .font(.largeTitle)
                             .bold()
                         StatusView(details: details)
-                        InsightsView(viewModel: .init(character: details, llm: viewModel.llm))
+                        InsightsView(viewModel: .init(character: details, insights: viewModel.insightsService))
                     }
 
                     InfoPanel(details: details)

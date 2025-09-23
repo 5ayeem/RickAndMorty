@@ -7,15 +7,15 @@
 
 import Foundation
 
-enum HTTPMethod: String {
+public enum HTTPMethod: String {
     case GET, POST, PUT, PATCH, DELETE
 }
 
-enum HTTPError: Error {
+public enum HTTPError: Error {
     case failed(message: String)
 }
 
-struct HTTPRequest {
+public struct HTTPRequest {
     var path: String
     var method: HTTPMethod = .GET
     var headers: [String: String] = [:]
@@ -23,13 +23,13 @@ struct HTTPRequest {
     var body: Data? = nil
 }
 
-struct HTTPResponse {
+public struct HTTPResponse {
     let statusCode: Int
     let data: Data
     let headers: [AnyHashable: Any]
 }
 
-protocol HTTPClient {
+public protocol HTTPClient {
     func send(_ req: HTTPRequest) async throws -> HTTPResponse
     func sendJSON<Body: Encodable, Out: Decodable>(
         path: String,
@@ -39,7 +39,7 @@ protocol HTTPClient {
     ) async throws -> Out
 }
 
-final class URLSessionHTTPClient: HTTPClient {
+public final class URLSessionHTTPClient: HTTPClient {
     
     private let baseURL: URL
     private let session: URLSession
@@ -47,7 +47,7 @@ final class URLSessionHTTPClient: HTTPClient {
     private let jsonEncoder: JSONEncoder
     private let jsonDecoder: JSONDecoder
 
-    init(
+    public init(
         baseURL: URL,
         session: URLSession = .shared,
         defaultHeaders: [String: String] = [:],
@@ -61,7 +61,7 @@ final class URLSessionHTTPClient: HTTPClient {
         self.jsonDecoder = jsonDecoder
     }
 
-    func send(_ req: HTTPRequest) async throws -> HTTPResponse {
+    public func send(_ req: HTTPRequest) async throws -> HTTPResponse {
         var comps = URLComponents(url: baseURL.appendingPathComponent(req.path), resolvingAgainstBaseURL: false)!
         if !req.queryItems.isEmpty { comps.queryItems = req.queryItems }
 
@@ -78,7 +78,7 @@ final class URLSessionHTTPClient: HTTPClient {
         return HTTPResponse(statusCode: http.statusCode, data: data, headers: http.allHeaderFields)
     }
     
-    func sendJSON<Body: Encodable, Out: Decodable>(
+    public func sendJSON<Body: Encodable, Out: Decodable>(
         path: String,
         method: HTTPMethod = .POST,
         headers: [String: String] = [:],

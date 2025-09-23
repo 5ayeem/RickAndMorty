@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD646BCC2E82EB9700A49EF0 /* LLMKit in Frameworks */ = {isa = PBXBuildFile; productRef = CD646BCB2E82EB9700A49EF0 /* LLMKit */; };
+		CD646BCF2E82EE4300A49EF0 /* NetworkKit in Frameworks */ = {isa = PBXBuildFile; productRef = CD646BCE2E82EE4300A49EF0 /* NetworkKit */; };
 		CD7303012E7DC5600004A297 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = CD7303002E7DC5600004A297 /* Apollo */; };
 		CD7303052E7DC5600004A297 /* ApolloTestSupport in Frameworks */ = {isa = PBXBuildFile; productRef = CD7303042E7DC5600004A297 /* ApolloTestSupport */; };
 		CD73037E2E7DF0A90004A297 /* RickAndMortyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = CD73037D2E7DF0A90004A297 /* RickAndMortyAPI */; };
@@ -63,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD646BCF2E82EE4300A49EF0 /* NetworkKit in Frameworks */,
+				CD646BCC2E82EB9700A49EF0 /* LLMKit in Frameworks */,
 				CD73037E2E7DF0A90004A297 /* RickAndMortyAPI in Frameworks */,
 				CD7303012E7DC5600004A297 /* Apollo in Frameworks */,
 			);
@@ -129,6 +133,8 @@
 			packageProductDependencies = (
 				CD7303002E7DC5600004A297 /* Apollo */,
 				CD73037D2E7DF0A90004A297 /* RickAndMortyAPI */,
+				CD646BCB2E82EB9700A49EF0 /* LLMKit */,
+				CD646BCE2E82EE4300A49EF0 /* NetworkKit */,
 			);
 			productName = RickAndMorty;
 			productReference = CD7302BD2E7DB6270004A297 /* RickAndMorty.app */;
@@ -216,6 +222,8 @@
 			packageReferences = (
 				CD7302FF2E7DC5600004A297 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				CD73037C2E7DF0A90004A297 /* XCLocalSwiftPackageReference "Generated/RMAPI" */,
+				CD646BCA2E82EB9700A49EF0 /* XCLocalSwiftPackageReference "LLMKit" */,
+				CD646BCD2E82EE4300A49EF0 /* XCLocalSwiftPackageReference "NetworkKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CD7302BE2E7DB6270004A297 /* Products */;
@@ -594,6 +602,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
+		CD646BCA2E82EB9700A49EF0 /* XCLocalSwiftPackageReference "LLMKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = LLMKit;
+		};
+		CD646BCD2E82EE4300A49EF0 /* XCLocalSwiftPackageReference "NetworkKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = NetworkKit;
+		};
 		CD73037C2E7DF0A90004A297 /* XCLocalSwiftPackageReference "Generated/RMAPI" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Generated/RMAPI;
@@ -612,6 +628,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CD646BCB2E82EB9700A49EF0 /* LLMKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LLMKit;
+		};
+		CD646BCE2E82EE4300A49EF0 /* NetworkKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NetworkKit;
+		};
 		CD7303002E7DC5600004A297 /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CD7302FF2E7DC5600004A297 /* XCRemoteSwiftPackageReference "apollo-ios" */;

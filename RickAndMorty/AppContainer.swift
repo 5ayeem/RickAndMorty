@@ -32,6 +32,14 @@ final class DefaultAppContainer: AppContainer {
     }
     
     func createCharacterDetailsViewModel(id: String) -> CharacterDetailsViewModel {
-        CharacterDetailsViewModel(id: id, repo: charactersRepo, llm: llmClientFactory.llm)
+        CharacterDetailsViewModel(
+            id: id,
+            repo: charactersRepo,
+            insightsService: createInsigtsService()
+        )
+    }
+    
+    func createInsigtsService() -> InsightsService {
+        InsightsService(llm: llmClientFactory.llm)
     }
 }

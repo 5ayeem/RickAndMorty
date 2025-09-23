@@ -12,16 +12,16 @@ import Combine
 final class CharacterDetailsViewModel: ObservableObject {
     private let repo: CharactersRepository
     private let id: String
-    let llm: LLMClient
+    let insightsService: InsightsService
 
     @Published var details: CharacterDetails?
     @Published var loading = false
     @Published var errorMessage: String?
 
-    init(id: String, repo: CharactersRepository, llm: LLMClient) {
+    init(id: String, repo: CharactersRepository, insightsService: InsightsService) {
         self.id = id
         self.repo = repo
-        self.llm = llm
+        self.insightsService = insightsService
     }
 
     func load() async {
