@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InsightsView: View {
     
-    @StateObject var viewModel: AIInsightsViewModel
+    @StateObject var viewModel: InsightsViewModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {

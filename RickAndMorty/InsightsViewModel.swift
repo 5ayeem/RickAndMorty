@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 @MainActor
-final class AIInsightsViewModel: ObservableObject {
+final class InsightsViewModel: ObservableObject {
     
     enum Mode: Equatable {
         case idle,
