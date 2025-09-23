@@ -22,15 +22,16 @@ struct CharacterDetailsView: View {
             if let details = viewModel.details {
                 VStack(alignment: .leading, spacing: 16) {
                     CharacterAsyncImageView(url: details.imageURL)
-                    .clipShape(
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                    )
-
+                        .clipShape(
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        )
+                    
                     VStack(alignment: .leading, spacing: 8) {
                         Text(details.name)
                             .font(.largeTitle)
                             .bold()
                         StatusView(details: details)
+                        InsightsView(viewModel: .init(character: details, llm: viewModel.llm))
                     }
 
                     InfoPanel(details: details)
@@ -42,7 +43,7 @@ struct CharacterDetailsView: View {
                         LazyVStack(alignment: .leading, spacing: 8) {
                             ForEach(details.episodes) { episode in
                                 EpisodeCell(episode: episode)
-                                .padding()
+                                    .padding()
                             }
                         }
                         .background(
@@ -52,7 +53,6 @@ struct CharacterDetailsView: View {
                                 )
                         )
                     }
-
                 }
                 .padding()
             }
@@ -117,23 +117,23 @@ private struct InfoPanel: View {
 }
 
 private struct InfoCell: View {
-  let icon: String
-  let title: String
-  let value: String
-
-  var body: some View {
-    HStack(alignment: .top, spacing: 8) {
-      Image(systemName: icon)
-        .frame(width: 16)
-      VStack(alignment: .leading, spacing: 2) {
-        Text(title).font(.caption).foregroundColor(.secondary)
-        Text(value).font(.callout)
-          .multilineTextAlignment(.leading)
-          .fixedSize(horizontal: false, vertical: true)
-      }
+    let icon: String
+    let title: String
+    let value: String
+    
+    var body: some View {
+        HStack(alignment: .top, spacing: 8) {
+            Image(systemName: icon)
+                .frame(width: 16)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title).font(.caption).foregroundColor(.secondary)
+                Text(value).font(.callout)
+                    .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
-    .frame(maxWidth: .infinity, alignment: .leading)
-  }
 }
 
 private struct EpisodeCell: View {
