@@ -5,11 +5,11 @@
 //  Created by Sayeem Hussain on 21/09/2025.
 //
 
-import Apollo
 import Foundation
-import RickAndMortyAPI
+@preconcurrency import Apollo
+@preconcurrency import RickAndMortyAPI
 
-protocol GraphQLNetworking {
+public protocol GraphQLNetworking {
     @discardableResult
     func fetch<Q: GraphQLQuery>(
         _ query: Q,
@@ -22,17 +22,17 @@ protocol GraphQLNetworking {
     ) async throws -> GraphQLResult<M.Data>
 }
 
-final class DefaultGraphQLNetworking: GraphQLNetworking {
+public final class DefaultGraphQLNetworking: GraphQLNetworking {
     
     // MARK: - Properties
     private let client: ApolloClientProtocol
 
     // MARK: - Initializers
-    init(client: ApolloClientProtocol) {
+    public init(client: ApolloClientProtocol) {
         self.client = client
     }
 
-    convenience init(endpoint: URL) {
+    public convenience init(endpoint: URL) {
         let store = ApolloStore()
         let urlSession = URLSessionClient()
         let provider = DefaultInterceptorProvider(client: urlSession, store: store)
@@ -43,7 +43,7 @@ final class DefaultGraphQLNetworking: GraphQLNetworking {
     }
 
     // MARK: - Async wrappers
-    func fetch<Q: GraphQLQuery>(
+    public func fetch<Q: GraphQLQuery>(
         _ query: Q,
         cachePolicy: CachePolicy = .returnCacheDataElseFetch
     ) async throws -> GraphQLResult<Q.Data> {
@@ -62,7 +62,7 @@ final class DefaultGraphQLNetworking: GraphQLNetworking {
         }
     }
 
-    func perform<M: GraphQLMutation>(
+    public func perform<M: GraphQLMutation>(
         _ mutation: M
     ) async throws -> GraphQLResult<M.Data> {
         try await withCheckedThrowingContinuation { cont in

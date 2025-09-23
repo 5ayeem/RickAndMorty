@@ -8,6 +8,7 @@
 import Foundation
 import RickAndMortyAPI
 import Apollo
+import NetworkKit
 
 enum CharactersrRepoError: Error {
     case failed
