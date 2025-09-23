@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CD646BCC2E82EB9700A49EF0 /* LLMKit in Frameworks */ = {isa = PBXBuildFile; productRef = CD646BCB2E82EB9700A49EF0 /* LLMKit */; };
 		CD646BCF2E82EE4300A49EF0 /* NetworkKit in Frameworks */ = {isa = PBXBuildFile; productRef = CD646BCE2E82EE4300A49EF0 /* NetworkKit */; };
+		CD646BD42E82FE9800A49EF0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CD646BD32E82FE9800A49EF0 /* README.md */; };
 		CD7303012E7DC5600004A297 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = CD7303002E7DC5600004A297 /* Apollo */; };
 		CD7303052E7DC5600004A297 /* ApolloTestSupport in Frameworks */ = {isa = PBXBuildFile; productRef = CD7303042E7DC5600004A297 /* ApolloTestSupport */; };
 		CD73037E2E7DF0A90004A297 /* RickAndMortyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = CD73037D2E7DF0A90004A297 /* RickAndMortyAPI */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD646BD32E82FE9800A49EF0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CD7302BD2E7DB6270004A297 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD7302CA2E7DB62A0004A297 /* RickAndMortyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD7302D42E7DB62A0004A297 /* RickAndMortyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +95,7 @@
 		CD7302B42E7DB6270004A297 = {
 			isa = PBXGroup;
 			children = (
+				CD646BD32E82FE9800A49EF0 /* README.md */,
 				CD7303832E7DF48F0004A297 /* GraphQL */,
 				CD7302BF2E7DB6270004A297 /* RickAndMorty */,
 				CD7302CD2E7DB62A0004A297 /* RickAndMortyTests */,
@@ -242,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD646BD42E82FE9800A49EF0 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +436,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -463,6 +468,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
