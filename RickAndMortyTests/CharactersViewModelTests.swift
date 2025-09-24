@@ -25,31 +25,29 @@ final class CharactersViewModelTests: XCTestCase {
         ]
         let repo = MockCharactersRepository()
         repo.nextPageResult = .success(expected)
-        let container = MockAppContainer()
-        let vm = CharactersViewModel(repo: repo, container: container)
+        let sut = CharactersViewModel(repo: repo)
 
         // When
-        await vm.load()
+        await sut.load()
 
         // Then
-        XCTAssertEqual(vm.characters, expected)
-        XCTAssertFalse(vm.loading)
-        XCTAssertNil(vm.errorMessage)
+        XCTAssertEqual(sut.characters, expected)
+        XCTAssertFalse(sut.loading)
+        XCTAssertNil(sut.errorMessage)
     }
 
     func test_load_failure_setsError_andKeepsCharactersEmpty() async {
         // Given
         let repo = MockCharactersRepository()
         repo.nextPageResult = .failure(TestError())
-        let container = MockAppContainer()
-        let vm = CharactersViewModel(repo: repo, container: container)
+        let sut = CharactersViewModel(repo: repo)
 
         // When
-        await vm.load()
+        await sut.load()
 
         // Then
-        XCTAssertTrue(vm.characters.isEmpty)
-        XCTAssertFalse(vm.loading)
-        XCTAssertEqual(vm.errorMessage, "Test error!")
+        XCTAssertTrue(sut.characters.isEmpty)
+        XCTAssertFalse(sut.loading)
+        XCTAssertEqual(sut.errorMessage, "Test error!")
     }
 }

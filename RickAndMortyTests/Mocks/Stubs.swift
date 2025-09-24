@@ -8,16 +8,6 @@
 @testable import RickAndMorty
 import Foundation
 
-final class MockAppContainer: AppContainer {
-    func createCharactersViewModel() -> CharactersViewModel {
-        CharactersViewModel(repo: MockCharactersRepository(), container: self)
-    }
-    
-    func createCharacterDetailsViewModel(id: String) -> CharacterDetailsViewModel {
-        CharacterDetailsViewModel(id: "1", repo: MockCharactersRepository(), llm: MockLLMClient())
-    }
-}
-
 // MARK: - Fixtures
 
 extension CharacterDetails {

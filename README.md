@@ -66,7 +66,7 @@ The app reads `OpenAIAPIKey` at runtime:
 
 ### High-level
 
-* **SwiftUI + MVVM**
+* **SwiftUI + MVVM + Routing**
 * **Apollo iOS** with async/await
 * **DI** via an `AppContainer` (composition root)
 * **Modularization:** a SPM package **`NetworkKit`**, **`LLMKit`**, **`RickAndMortyAPIKit`**
@@ -107,8 +107,6 @@ App (Views, ViewModels, InsightsService, Repositories)
 * **No streaming:** LLM responses are single-shot (simpler code and UI). Streaming could be added with Server-Sent Events / incremental decoding.
 * **Rate limits / quotas:** The app falls back to a mock LLM when no key is set.
 * **Accessibility:** Basic support via SwiftUI defaults
-* **Dark mode:** No support for dark mode.
-* **Navigation:** No centralised navigation logic via use of coordinators.
 
 ---
 

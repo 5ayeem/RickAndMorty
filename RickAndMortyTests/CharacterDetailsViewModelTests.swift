@@ -16,16 +16,16 @@ final class CharacterDetailsViewModelTests: XCTestCase {
     }
     
     var repo: MockCharactersRepository!
-    var llm: MockLLMClient!
+    var service: MockInsightsService!
     
     override func setUpWithError() throws {
         self.repo = MockCharactersRepository()
-        self.llm = MockLLMClient()
+        self.service = MockInsightsService()
     }
     
     override func tearDownWithError() throws {
         self.repo = nil
-        self.llm = nil
+        self.service = nil
     }
 
     func test_load_success_setsDetails_andTurnsOffLoading() async {
@@ -37,30 +37,38 @@ final class CharacterDetailsViewModelTests: XCTestCase {
         )
         repo.nextDetailsResult = Result<CharacterDetails, Error>.success(details)
 
-        let vm = CharacterDetailsViewModel(id: "361", repo: repo, llm: llm)
+        let sut = CharacterDetailsViewModel(
+            id: "361",
+            repo: repo,
+            insightsService: service
+        )
         
         // When
-        await vm.load()
+        await sut.load()
         
         // Then
         XCTAssertEqual(repo.lastRequestedID, "361")
-        XCTAssertEqual(vm.details?.name, "Toxic Rick")
-        XCTAssertNil(vm.errorMessage)
-        XCTAssertFalse(vm.loading)
+        XCTAssertEqual(sut.details?.name, "Toxic Rick")
+        XCTAssertNil(sut.errorMessage)
+        XCTAssertFalse(sut.loading)
     }
 
     func test_load_failure_setsError_andLeavesDetailsNil() async {
         // Given
         repo.nextDetailsResult = .failure(TestError())
 
-        let vm = CharacterDetailsViewModel(id: "X", repo: repo, llm: llm)
+        let sut = CharacterDetailsViewModel(
+            id: "X",
+            repo: repo,
+            insightsService: service
+        )
         
         // When
-        await vm.load()
+        await sut.load()
         
         // Then
-        XCTAssertNil(vm.details)
-        XCTAssertEqual(vm.errorMessage, "error!")
-        XCTAssertFalse(vm.loading)
+        XCTAssertNil(sut.details)
+        XCTAssertEqual(sut.errorMessage, "error!")
+        XCTAssertFalse(sut.loading)
     }
 }

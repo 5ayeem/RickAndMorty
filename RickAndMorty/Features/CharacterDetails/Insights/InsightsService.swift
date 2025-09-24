@@ -8,7 +8,14 @@
 import LLMKit
 import Foundation
 
-final class InsightsService {
+protocol InsightsService {
+    
+    func summarize(_ c: CharacterDetails) async throws -> String
+    func funFact(_ c: CharacterDetails) async throws -> String
+    func answer(_ c: CharacterDetails, question: String) async throws -> String
+}
+
+final class DefaultInsightsService: InsightsService {
     
     private let llm: LLMClient
     

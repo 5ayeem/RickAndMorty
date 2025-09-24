@@ -29,7 +29,7 @@ final class DefaultAppContainer: AppContainer {
     }
     
     func createCharactersViewModel() -> CharactersViewModel {
-        CharactersViewModel(repo: charactersRepo, container: self)
+        CharactersViewModel(repo: charactersRepo)
     }
     
     func createCharacterDetailsViewModel(id: String) -> CharacterDetailsViewModel {
@@ -41,6 +41,6 @@ final class DefaultAppContainer: AppContainer {
     }
     
     func createInsigtsService() -> InsightsService {
-        InsightsService(llm: llmClientFactory.llm)
+        DefaultInsightsService(llm: llmClientFactory.llm)
     }
 }

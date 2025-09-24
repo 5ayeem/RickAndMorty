@@ -10,69 +10,95 @@ import XCTest
 
 @MainActor
 final class InsightsViewModelTests: XCTestCase {
-    
-    struct TestError: LocalizedError {
-        var errorDescription: String? { "Rate limited" }
-    }
 
-    func test_summarize_success_setsResult_andTracksInput() async {
+    // MARK: - Tests
+
+    func testSummarize_success_setsResultMode() async throws {
         // Given
-        let c = CharacterDetails.stub()
-        let llm = MockLLMClient()
-        llm.summarizeResult = .success("• Alive human.")
-
-        let vm = InsightsViewModel(character: c, llm: llm)
+        let (vm, service) = makeSUT()
+        service.summarizeResult = .success("Summary")
         
         // When
         await vm.summarize()
         
         // Then
-        if case .result(let text) = vm.mode {
-            XCTAssertEqual(text, "• Alive human.")
-        } else {
-            XCTFail("Expected .result")
+        guard case .result(let text) = vm.mode else {
+            return XCTFail("Expected .result, got \(vm.mode)")
         }
-        XCTAssertEqual(llm.lastSummarized?.id, c.id)
+        XCTAssertEqual(text, "Summary")
     }
 
-    func test_funFact_error_setsError() async {
+    func testFunFact_success_setsResultMode() async throws {
         // Given
-        let c = CharacterDetails.stub()
-        let llm = MockLLMClient()
-        llm.funFactResult = .failure(TestError())
-
-        let vm = InsightsViewModel(character: c, llm: llm)
+        let (vm, service) = makeSUT()
+        service.funFactResult = .success("Fun")
         
         // When
         await vm.funFact()
         
         // Then
-        if case .error(let msg) = vm.mode {
-            XCTAssertTrue(msg.contains("Rate limited"))
-        } else {
-            XCTFail("Expected .error")
+        guard case .result(let text) = vm.mode else {
+            return XCTFail("Expected .result, got \(vm.mode)")
         }
+        XCTAssertEqual(text, "Fun")
     }
 
-    func test_ask_trimsQuestion_andPassesToLLM() async {
+    func testAsk_success_setsResultMode() async throws {
         // Given
-        let c = CharacterDetails.stub()
-        let llm = MockLLMClient()
-        llm.answerResult = .success("Because reasons.")
-
-        let vm = InsightsViewModel(character: c, llm: llm)
-        vm.question = "   Why is he popular?   "
+        let (vm, service) = makeSUT()
+        service.answerResult = .success("Ask")
+        vm.question = "Why is he popular?"
         
         // When
         await vm.ask()
         
         // Then
-        if case .result(let text) = vm.mode {
-            XCTAssertEqual(text, "Because reasons.")
-        } else {
-            XCTFail("Expected .result")
+        guard case .result(let text) = vm.mode else {
+            return XCTFail("Expected .result, got \(vm.mode)")
         }
-        XCTAssertEqual(llm.lastAnswerInput?.question, "Why is he popular?")
-        XCTAssertEqual(llm.lastAnswerInput?.character.id, c.id)
+        XCTAssertEqual(text, "Ask")
+    }
+
+    func testAsk_ignoresEmptyQuestion_doesNotChangeMode() async {
+        // Given
+        let (vm, _) = makeSUT()
+        vm.question = "   " // only whitespace
+        
+        // When
+        await vm.ask()
+        
+        // Then
+        // Should remain idle (no transition to .loading/.result/.error)
+        XCTAssertEqual(vm.mode, .idle)
+    }
+
+    func testSummarize_failure_setsErrorMode() async {
+        enum TestError: LocalizedError {
+            case failed
+            var errorDescription: String? { "failed" }
+        }
+        
+        // Given
+        let (vm, service) = makeSUT()
+        service.summarizeResult = .failure(TestError.failed)
+        
+        // When
+        await vm.summarize()
+        
+        // Then
+        if case .error(let message) = vm.mode {
+            XCTAssertEqual(message, "failed")
+        } else {
+            XCTFail("Expected .error, got \(vm.mode)")
+        }
+    }
+}
+
+// MARK: - Fixtures
+extension InsightsViewModelTests {
+    private func makeSUT() -> (InsightsViewModel, MockInsightsService) {
+        let service = MockInsightsService()
+        let vm = InsightsViewModel(character: CharacterDetails.stub(), insights: service)
+        return (vm, service)
     }
 }

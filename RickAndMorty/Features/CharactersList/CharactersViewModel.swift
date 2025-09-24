@@ -16,11 +16,9 @@ final class CharactersViewModel: ObservableObject {
     @Published var errorMessage: String?
     
     private let repo: CharactersRepository
-    let container: AppContainer
 
-    init(repo: CharactersRepository, container: AppContainer) {
+    init(repo: CharactersRepository) {
         self.repo = repo
-        self.container = container
     }
 
     func load(page: Int = 1) async {

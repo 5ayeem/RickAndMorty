@@ -10,7 +10,8 @@ import SwiftUI
 struct CharactersView: View {
     
     @StateObject var viewModel: CharactersViewModel
-    
+    @EnvironmentObject private var router: Router
+
     private let columns: Int
 
     init(
@@ -35,11 +36,8 @@ struct CharactersView: View {
 
             LazyVGrid(columns: gridLayout, spacing: 12) {
                 ForEach(viewModel.characters) { character in
-                    NavigationLink {
-                        CharacterDetailsView(
-                            viewModel: viewModel.container
-                                .createCharacterDetailsViewModel(id: character.id)
-                        )
+                    Button {
+                        router.go(.characterDetails(id: character.id))
                     } label: {
                         CharacterTile(character: character)
                     }
