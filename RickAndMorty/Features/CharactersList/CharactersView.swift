@@ -82,3 +82,11 @@ private struct CharacterTile: View {
         .shadow(color: .black.opacity(0.05), radius: 4, y: 2)
     }
 }
+
+#Preview {
+    CharactersView(
+        viewModel: .init(
+            repo: FakeCharactersRepository()
+        )
+    )
+}

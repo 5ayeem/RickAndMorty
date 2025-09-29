@@ -154,3 +154,14 @@ private struct EpisodeCell: View {
         }
     }
 }
+
+#Preview {
+    CharacterDetailsView(viewModel: .init(
+            id: "1",
+            repo: FakeCharactersRepository(),
+            insightsService: DefaultInsightsService(
+                llm: MockLLMClient()
+            )
+        )
+    )
+}

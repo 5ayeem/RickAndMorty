@@ -68,3 +68,26 @@ struct InsightsView: View {
             .stroke(.black.opacity(0.05)))
     }
 }
+
+#Preview {
+    InsightsView(
+        viewModel: .init(
+            character: .init(
+                id: "1",
+                name: "Sam",
+                status: "Dead",
+                species: "rabbit",
+                type: "",
+                gender: "male",
+                originName: "Mars",
+                locationName: "Earth",
+                imageURL: nil,
+                episodes: [],
+                createdAtISO: "2017-11-10T12:00:00Z"
+            ),
+            insights: DefaultInsightsService(
+                llm: MockLLMClient()
+            )
+        )
+    )
+}
